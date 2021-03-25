@@ -38,17 +38,18 @@ public class DoctorDao {
 		return i;
 	}
 
-	public void update(Map<String, String> map) throws SQLException {
+	public int update(Map<String, String> map) throws SQLException {
 		Connection con;
 		Statement st;
 		con = databaseManager.getConnection();
 		st = con.createStatement();
 
-		st.executeUpdate("update doctor set dname = '" + map.get("dname") + "', speciality = '" + map.get(SPECIALITY)
+		int i = st.executeUpdate("update doctor set dname = '" + map.get("dname") + "', speciality = '" + map.get(SPECIALITY)
 				+ "' where did = " + map.get("did"));
 
 		st.close();
 		con.close();
+		return i;
 	}
 
 	public Map searchById(String did) throws SQLException {
@@ -126,5 +127,7 @@ public class DoctorDao {
 		return doctorList;
 
 	}
+	
+	
 
 }

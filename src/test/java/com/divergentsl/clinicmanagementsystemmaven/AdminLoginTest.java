@@ -1,5 +1,6 @@
 package com.divergentsl.clinicmanagementsystemmaven;
 
+import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.sql.Connection;
@@ -37,12 +38,21 @@ public class AdminLoginTest {
 	}
 
 	@Test
-	void testAdminLogin() throws SQLException {
+	void testAdminLoginSuccessful() throws SQLException {
 		
 		LoginDao loginDao = new LoginDao(driverManager);
 		System.out.println("Login Dao object created");
 		assertTrue(loginDao.adminLogin("admin", "root"));
 	}
+	
+	@Test
+	void testAdminLoginUnsuccessful() throws SQLException {
+		
+		LoginDao loginDao = new LoginDao(driverManager);
+		System.out.println("Login Dao object created");
+		assertFalse(loginDao.adminLogin("adminasdas", "ramsdbhoot"));
+	}
+
 
 
 

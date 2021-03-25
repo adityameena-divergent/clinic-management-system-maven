@@ -9,6 +9,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.HashMap;
 import java.util.Map;
 
 import org.junit.jupiter.api.BeforeEach;
@@ -106,6 +107,16 @@ public class DoctorDaoTest {
 		assertTrue(doctorDao.list().size() > 0);
 	}
 	
+	@Test
+	void updateDoctor() throws SQLException {
+		DoctorDao doctorDao = new DoctorDao(driverManager);
+		Map<String,String> map = new HashMap<>();
+		map.put("dname", "abhishek");
+		map.put("speciality", "surgeon");
+		map.put("did", "1001");
+		int i = doctorDao.update(map);
+		assertEquals(1, i);
+	}
 	
 
 }

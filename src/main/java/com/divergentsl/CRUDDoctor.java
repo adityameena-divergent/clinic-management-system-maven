@@ -12,15 +12,9 @@ public class CRUDDoctor {
 	public static void CRUDOperation() {
 		CRUD: while (true) {
 
+			printCRUDDoctorOption();
 			Scanner sc = new Scanner(System.in);
 
-			System.out.println("\n\n----Edit DOCTOR----");
-			System.out.println("1. Insert a new doctor");
-			System.out.println("2. List all doctors");
-			System.out.println("3. Update doctor data");
-			System.out.println("4. Remove doctor");
-			System.out.println("5. Back");
-			System.out.println("Enter your choice: ");
 			String input = sc.nextLine();
 
 			switch (input) {
@@ -49,6 +43,16 @@ public class CRUDDoctor {
 				break;
 			}
 		}
+	}
+	
+	public static void printCRUDDoctorOption() {
+		System.out.println("\n\n----Edit DOCTOR----");
+		System.out.println("1. Insert a new doctor");
+		System.out.println("2. List all doctors");
+		System.out.println("3. Update doctor data");
+		System.out.println("4. Remove doctor");
+		System.out.println("5. Back");
+		System.out.println("Enter your choice: ");
 	}
 
 	public static void deleteDoctor() {
@@ -101,10 +105,7 @@ public class CRUDDoctor {
 			System.out.println("\nDoctor not found!");
 		} else {
 
-			System.out.println("\n----Update Doctor Data----");
-			System.out.println("Doctor Id : " + map.get("did"));
-			System.out.println("Previous Doctor Name : " + map.get("dname"));
-			System.out.println("Previous Doctor Speciality : " + map.get("speciality"));
+			printPreviousDataOfDoctor(map);
 
 			System.out.print("\nEnter New Doctor Name : ");
 			map.put("dname", sc.nextLine());
@@ -121,6 +122,13 @@ public class CRUDDoctor {
 		}
 	}
 
+	
+	public static void printPreviousDataOfDoctor(Map<String,String> map) {
+		System.out.println("\n----Update Doctor Data----");
+		System.out.println("Doctor Id : " + map.get("did"));
+		System.out.println("Previous Doctor Name : " + map.get("dname"));
+		System.out.println("Previous Doctor Speciality : " + map.get("speciality"));
+	}
 
 	public static void listDoctors() {
 
