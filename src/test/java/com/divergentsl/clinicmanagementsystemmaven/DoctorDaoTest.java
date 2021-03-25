@@ -15,6 +15,7 @@ import java.util.Map;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import com.divergentsl.CRUDDoctor;
 import com.divergentsl.dao.DoctorDao;
 import com.divergentsl.dao.LoginDao;
 
@@ -116,6 +117,11 @@ public class DoctorDaoTest {
 		map.put("did", "1001");
 		int i = doctorDao.update(map);
 		assertEquals(1, i);
+	}
+	
+	@Test
+	void printDoctorOption() {
+		CRUDDoctor.printCRUDDoctorOption();
 	}
 	
 
