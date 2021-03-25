@@ -20,10 +20,7 @@ public class Login {
         Main:
         while(true) {
 
-            System.out.println("\n----Login Panel----");
-            System.out.println("1. Admin");
-            System.out.println("2. Doctor");
-            System.out.println("3. Exit");
+            printLoginOption();
 
             Scanner sc = new Scanner(System.in);
             String input = sc.nextLine();
@@ -60,6 +57,13 @@ public class Login {
                     break;
             }
         }
+    }
+    
+    public static void printLoginOption() {
+    	System.out.println("\n----Login Panel----");
+        System.out.println("1. Admin");
+        System.out.println("2. Doctor");
+        System.out.println("3. Exit");
     }
 
 

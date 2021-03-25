@@ -11,6 +11,10 @@ import java.util.Map;
 
 import com.divergentsl.IDatabaseManager;
 
+/**
+ * It is a helper class that contains methods releted to patient appointment
+ * 
+ */
 public class PatientAppointmentDao {
 	
 	IDatabaseManager databaseManager;
@@ -20,6 +24,12 @@ public class PatientAppointmentDao {
 	}
 	
 	
+	/**
+	 * It is helper method for making new appointment for patient
+	 * @param data
+	 * @return 1 if appointment successfully created, otherwise it returns 0.
+	 * @throws SQLException
+	 */
 	public int makeAppointment(Map<String, String> data) throws SQLException {
 		
 		Connection con = null;
@@ -37,7 +47,12 @@ public class PatientAppointmentDao {
 	}
 	
 	
-	
+	/**
+	 * It is a helper method for retreiving all patient that has been appointed to doctor, whose currently logged in.
+	 * @param id
+	 * @return List of Map of patient data.
+	 * @throws SQLException
+	 */
 	public List<Map<String, String>> patientAppointToYou(String id) throws SQLException {
 		
 		Connection con = null;
@@ -65,7 +80,11 @@ public class PatientAppointmentDao {
 		return listOfPatients;
 	}
 	
-	
+	/**
+	 * It is a helper method for retreiving all patient appointed data.
+	 * @return List of Map of patient data.
+	 * @throws SQLException
+	 */
 	public List<Map<String, String>> allPatientList() throws SQLException {
 		
 		Connection con = null;
@@ -94,7 +113,12 @@ public class PatientAppointmentDao {
 		return listOfPatient;
 	}
 	
-	
+	/**
+	 * It is a helper method for retreiving patient data by appointment number
+	 * @param appointmentNumber
+	 * @return Map of patient data if found, otherwise it return empty Map.
+	 * @throws SQLException
+	 */
 	public Map<String, String> checkPatient(String appointmentNumber) throws SQLException {
 		
 		Connection con = null;
@@ -117,6 +141,7 @@ public class PatientAppointmentDao {
 	/**
 	 * It is a helper method for adding a prescription
 	 * @param data
+	 * @return 1 if prescription added successfully, otherwise it returns 0.
 	 * @throws SQLException
 	 */
 	public int addPrescription(Map<String, String> data) throws SQLException {
@@ -135,7 +160,12 @@ public class PatientAppointmentDao {
 		return i;
 	}
 	
-	
+	/**
+	 * It is a helper method retreiving all appointment history of patient.
+	 * @param patientId
+	 * @return List of Map of patient historical data.
+	 * @throws SQLException
+	 */
 	public List<Map<String, String>> patientHistory(String patientId) throws SQLException {
 		
 		Connection con = null;
@@ -163,7 +193,12 @@ public class PatientAppointmentDao {
 	}
 	
 	
-	
+	/**
+	 * It is a helper method for generating invoice for patient
+	 * @param patientId
+	 * @return
+	 * @throws SQLException
+	 */
 	public Map<String, String> generateInvoice(String patientId) throws SQLException {
 		
 		Connection con = null;

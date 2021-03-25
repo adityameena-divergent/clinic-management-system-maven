@@ -10,8 +10,10 @@ import com.divergentsl.dao.LabTestDao;
 
 public class LabTest {
 
+	/**
+	 * This method takes a input & redirect it to method that admin want to perform the operation.
+	 */
 	public static void labTestPanel() {
-
 		Exit: while (true) {
 
 			Scanner sc = new Scanner(System.in);
@@ -47,7 +49,9 @@ public class LabTest {
 	}
 
 	
-
+	/**
+	 * This method print all the operation that admin can perform on lab
+	 */
 	private static void printTestOptions() {
 
 		System.out.println("\n----Lab Test Panel----");
@@ -60,6 +64,9 @@ public class LabTest {
 		System.out.print("Enter Your Choice: ");
 	}
 
+	/**
+	 * This method is used for insert new test data of patient
+	 */
 	public static void addNewTest() {
 
 		Scanner sc = new Scanner(System.in);
@@ -84,6 +91,9 @@ public class LabTest {
 		}
 	}
 
+	/**
+	 * This method print the test data of input patient id
+	 */
 	private static void readTest() {
 
 		System.out.println("\n----Read Lab Test----");
@@ -113,6 +123,9 @@ public class LabTest {
 	}
 	
 	
+	/**
+	 * This method print all the test records of patient
+	 */
 	public static void listTest() {
 
 		System.out.println("\n----List Tests----");
@@ -140,7 +153,9 @@ public class LabTest {
 	}
 	
 	
-	
+	/**
+	 * This method delete the test record of given input test id
+	 */
 	public static void deleteTest() {
 
 		System.out.print("\nEnter Test Id: ");
@@ -163,7 +178,9 @@ public class LabTest {
 		}
 	}
 	
-	
+	/**
+	 * This method update the data of given input test id
+	 */
 	private static void updateTest() {
 
 		System.out.println("\n----Update Test Data----");

@@ -11,6 +11,11 @@ import java.util.Map;
 
 import com.divergentsl.IDatabaseManager;
 
+/**
+ * 
+ * It is a helper class for performing CRUD operation on patient
+ *
+ */
 public class PatientDao {
 	
 	IDatabaseManager databaseManager;
@@ -19,7 +24,12 @@ public class PatientDao {
 		this.databaseManager = databaseManager;
 	}
 	
-	
+	/**
+	 * It is a helper method for inserting new patient data.
+	 * @param inputData
+	 * @return 1 if data inserted successfully, otherwise it returns false.
+	 * @throws SQLException
+	 */
 	public int insert(Map<String, String> inputData) throws SQLException {
 
 		Connection con = null;
@@ -38,6 +48,12 @@ public class PatientDao {
 	}
 	
 	
+	/**
+	 * It is a helper method for search patient data
+	 * @param patientId
+	 * @return Map of patient data if patient is found, otherwise it returns empty Map.
+	 * @throws SQLException
+	 */
 	public Map<String, String> search(String patientId) throws SQLException {
 		
 		Connection con = null;
@@ -63,6 +79,11 @@ public class PatientDao {
 	}
 	
 	
+	/**
+	 * It is a helper method for retriving all patient data.
+	 * @return List of Map of patient data.
+	 * @throws SQLException
+	 */
 	public List<Map<String, String>> listAll() throws SQLException {
 		
 		Connection con = null;
@@ -89,6 +110,12 @@ public class PatientDao {
 	}
 	
 	
+	/**
+	 * It is a helper method for delete a specific patient data.
+	 * @param patientId
+	 * @return 1 if data deleted succesfully, otherwise it returns false.
+	 * @throws SQLException
+	 */
 	public int delete(String patientId) throws SQLException {
 		
 		Connection con = null;
@@ -103,6 +130,12 @@ public class PatientDao {
 	}
 	
 	
+	/**
+	 * It is a helper method for update the patient data.
+	 * @param data
+	 * @return 1 if data successfully updated, otherwise it returns 0.
+	 * @throws SQLException
+	 */
 	public int update(Map<String, String> data) throws SQLException {
 		Connection con = null;
 		Statement st = null;

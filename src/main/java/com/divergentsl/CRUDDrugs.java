@@ -1,11 +1,8 @@
 package com.divergentsl;
 
-import javax.xml.crypto.Data;
-
 import com.divergentsl.dao.DrugDao;
 
 import java.sql.*;
-import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
 
@@ -18,13 +15,7 @@ public class CRUDDrugs {
 	public static void CRUDOperations() {
 		CRUD: while (true) {
 
-			System.out.println("\n\n----Drugs----");
-			System.out.println("1. Add new drugs");
-			System.out.println("2. Search drugs");
-			System.out.println("3. Delete drugs");
-			System.out.println("4. Update drugs");
-			System.out.println("5. Back");
-			System.out.print("Enter your choice: ");
+			printDrugOption();
 
 			Scanner sc = new Scanner(System.in);
 			String input = sc.nextLine();
@@ -56,6 +47,21 @@ public class CRUDDrugs {
 			}
 		}
 	}
+	
+	
+	/**
+	 * This method print the operation name that admin can perform on drugs
+	 */
+	public static void printDrugOption() {
+		System.out.println("\n\n----Drugs----");
+		System.out.println("1. Add new drugs");
+		System.out.println("2. Search drugs");
+		System.out.println("3. Delete drugs");
+		System.out.println("4. Update drugs");
+		System.out.println("5. Back");
+		System.out.print("Enter your choice: ");
+	}
+	
 
 	/**
      * This method update the existing data of drugs
@@ -94,10 +100,10 @@ public class CRUDDrugs {
         }
     }
 
+    
 	/**
 	 * This method takes drug_id and remove it from database.
 	 */
-
 	public static void deleteDrug() {
 		System.out.println("\n----Delete Drug----");
 		System.out.print("Enter Drug Id: ");
@@ -118,10 +124,10 @@ public class CRUDDrugs {
 
 	}
 
+	
 	/**
-	 * This method print the information about input drug_id
+	 * This method print the data of input drug_id
 	 */
-
 	public static void searchDrug() {
 		System.out.println("\n----Search Drug----");
 		System.out.println("Enter Drug Id: ");
@@ -146,7 +152,7 @@ public class CRUDDrugs {
 	}
 
 	/**
-	 * This method takes drug data from user that he wants to add
+	 * This method takes input drug data from user and insert it into database.
 	 */
 	public static void addDrug() {
 

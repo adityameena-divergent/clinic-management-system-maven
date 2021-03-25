@@ -105,7 +105,7 @@ public class DoctorDaoTest {
 	@Test
 	void listDoctor() throws SQLException {
 		DoctorDao doctorDao = new DoctorDao(driverManager);
-		assertTrue(doctorDao.list().size() > 0);
+		assertFalse(doctorDao.list().isEmpty());
 	}
 	
 	@Test
@@ -119,10 +119,6 @@ public class DoctorDaoTest {
 		assertEquals(1, i);
 	}
 	
-	@Test
-	void printDoctorOption() {
-		CRUDDoctor.printCRUDDoctorOption();
-	}
 	
 
 }

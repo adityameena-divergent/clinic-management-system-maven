@@ -66,6 +66,12 @@ public class PatientAppointment {
 		}
 	}
 
+	
+	/**
+	 * This method print all patient appointment that has been appoint to that doctor whose currently logged in.
+	 * @param doctorId
+	 * @param dname
+	 */
 	public static void patientAppointToYou(String doctorId, String dname) {
 
 		try {
@@ -96,6 +102,10 @@ public class PatientAppointment {
 		}
 	}
 
+	/**
+	 * This method print all the patient appointment
+	 * @param doctorName
+	 */
 	public static void allPatientList(String doctorName) {
 
 		try {
@@ -126,6 +136,9 @@ public class PatientAppointment {
 		}
 	}
 
+	/**
+	 * This method is used to add prescription of given appointment number
+	 */
 	public static void addPrescription() {
 
 		Scanner sc = new Scanner(System.in);
@@ -161,6 +174,9 @@ public class PatientAppointment {
 		}
 	}
 
+	/**
+	 * This method print all the appointment of given patient
+	 */
 	public static void checkPatientHistory() {
 
 		try {
@@ -198,6 +214,9 @@ public class PatientAppointment {
 		}
 	}
 
+	/**
+	 * This method generate & print invoice of given patient according to their appointment 
+	 */
 	public static void generateInvoice() {
 		System.out.print("\nEnter Patient Id: ");
 		String patientId = new Scanner(System.in).nextLine();

@@ -11,6 +11,10 @@ import java.util.Map;
 
 import com.divergentsl.IDatabaseManager;
 
+/**
+ * It is a helper class for performing CRUD operation on lab.
+ *
+ */
 public class LabTestDao {
 
 	IDatabaseManager databaseManager;
@@ -19,12 +23,18 @@ public class LabTestDao {
 		this.databaseManager = databaseManager;
 	}
 	
+	public final String TEST_NAME = "test_name";
+	public final String PATIENT_ID = "patient_id";
+	public final String TEST_FEE = "test_fee";
+	public final String TEST_ID = "test_id";
+	
 	
 	/**
 	 * It is a helper method for add new lab test data
 	 * @param patientId
 	 * @param testName
 	 * @param fee
+	 * @return 1 if test data successfully add, otherwise it returns 0.
 	 * @throws SQLException
 	 */
 	public int add(String patientId, String testName, String fee) throws SQLException {
@@ -35,7 +45,7 @@ public class LabTestDao {
 		con = databaseManager.getConnection();
 		st = con.createStatement();
 
-		int i = st.executeUpdate("insert into lab_test (test_name, patient_id, test_fee) values ('" + testName + "', "
+		int i = st.executeUpdate("insert into lab_test (" + TEST_NAME + ", " + PATIENT_ID + ", " + TEST_FEE + ") values ('" + testName + "', "
 				+ patientId + ", " + fee + ")");
 		System.out.println("Test Added Successfully");
 		st.close();
@@ -58,7 +68,7 @@ public class LabTestDao {
 		con = databaseManager.getConnection();
 		st = con.createStatement();
 
-		ResultSet rs = st.executeQuery("select * from lab_test where test_id = " + testId);
+		ResultSet rs = st.executeQuery("select * from lab_test where " + TEST_ID + " = " + testId);
 		Map<String, String> data = new HashMap<>();
 
 		if (rs.next()) {
@@ -85,7 +95,7 @@ public class LabTestDao {
 		st = con.createStatement();
 
 		ResultSet rs = st.executeQuery(
-				"select test_id, test_name, p.patient_id, p.patient_name, p.contact_number, test_fee from lab_test l join patient p on p.patient_id = l.patient_id");
+				"select " + TEST_ID + ", " + TEST_NAME + ", p.patient_id, p.patient_name, p.contact_number, " + TEST_FEE + " from lab_test l join patient p on p.patient_id = l.patient_id");
 		List<Map<String, String>> list = new ArrayList<>();
 
 		while (rs.next()) {
@@ -104,6 +114,12 @@ public class LabTestDao {
 	}
 	
 	
+	/**
+	 * It is a helper method for delete test data.
+	 * @param testId
+	 * @return 1 if data successfully delete, otherwise it returns 0.
+	 * @throws SQLException
+	 */
 	public int delete(String testId) throws SQLException {
 		
 		Connection con = null;
@@ -112,7 +128,7 @@ public class LabTestDao {
 		con = databaseManager.getConnection();
 		st = con.createStatement();
 		
-		int i = st.executeUpdate("delete from lab_test where test_id = " + testId);
+		int i = st.executeUpdate("delete from lab_test where " + TEST_ID + " = " + testId);
 		System.out.println("Data deleted successfully...");
 		
 		st.close();
@@ -121,6 +137,12 @@ public class LabTestDao {
 	}
 	
 	
+	/**
+	 * It is a helper for updating the lab test data.
+	 * @param data
+	 * @return 1 if data successfully updated, otherwise return 0.
+	 * @throws SQLException
+	 */
 	public int update(Map<String, String> data) throws SQLException {
 		
 		Connection con = null;
@@ -129,8 +151,8 @@ public class LabTestDao {
 		con = databaseManager.getConnection();
 		st = con.createStatement();
 		
-		int i = st.executeUpdate("update lab_test set test_name = '" + data.get("testName") + "', patient_id = " + data.get("patientId")
-				+ ", test_fee = " + data.get("fee") + " where test_id = "
+		int i = st.executeUpdate("update lab_test set " + TEST_NAME + " = '" + data.get("testName") + "', " + PATIENT_ID + " = " + data.get("patientId")
+				+ ", " + TEST_FEE + " = " + data.get("fee") + " where " + TEST_ID + " = "
 				+ data.get("testId"));
 		System.out.println("\nData update successfully...");
 		

@@ -14,6 +14,7 @@ import java.util.Map;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import com.divergentsl.CRUDDrugs;
 import com.divergentsl.dao.DrugDao;
 
 public class DrugDaoTest {
@@ -108,5 +109,6 @@ public class DrugDaoTest {
 		int i = drugDao.update(map);
 		assertEquals(0, i);
 	}
+	
 	
 }

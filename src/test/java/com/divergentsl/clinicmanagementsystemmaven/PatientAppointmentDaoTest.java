@@ -14,6 +14,7 @@ import java.util.Map;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import com.divergentsl.PatientAppointment;
 import com.divergentsl.dao.PatientAppointmentDao;
 
 public class PatientAppointmentDaoTest {
@@ -133,6 +134,8 @@ public class PatientAppointmentDaoTest {
 		Map<String,String> map = patientAppointmentDao.generateInvoice("1046541");
 		assertTrue(map.isEmpty());
 	}
+	
+	
 	
 	
 }

@@ -9,6 +9,9 @@ import com.divergentsl.dao.DoctorDao;
 
 public class CRUDDoctor {
 
+	/**
+	 * This method takes input from user & redirect it to specific method which he want perform operations on doctor
+	 */
 	public static void CRUDOperation() {
 		CRUD: while (true) {
 
@@ -45,6 +48,9 @@ public class CRUDDoctor {
 		}
 	}
 	
+	/**
+	 * This method print all the operations that can perform on doctor
+	 */
 	public static void printCRUDDoctorOption() {
 		System.out.println("\n\n----Edit DOCTOR----");
 		System.out.println("1. Insert a new doctor");
@@ -55,6 +61,10 @@ public class CRUDDoctor {
 		System.out.println("Enter your choice: ");
 	}
 
+	
+	/**
+	 * This method takes doctor id and remove it from record
+	 */
 	public static void deleteDoctor() {
 
 		System.out.println("\n----Remove Doctor----");
@@ -83,6 +93,9 @@ public class CRUDDoctor {
 		}
 	}
 
+	/**
+	 * This method takes doctor id and new data from user & update the doctor data
+	 */
 	public static void updateDoctor() {
 
 		System.out.println("\n----Update Doctor----");
@@ -101,7 +114,7 @@ public class CRUDDoctor {
 			e.printStackTrace();
 		}
 
-		if (map==null || map.size() == 0) {
+		if (map == null || map.size() == 0) {
 			System.out.println("\nDoctor not found!");
 		} else {
 
@@ -123,15 +136,21 @@ public class CRUDDoctor {
 	}
 
 	
+	/**
+	 * This method print the previous data before giving the input for update data.
+	 * @param map of doctor data.
+	 */
 	public static void printPreviousDataOfDoctor(Map<String,String> map) {
 		System.out.println("\n----Update Doctor Data----");
 		System.out.println("Doctor Id : " + map.get("did"));
-		System.out.println("Previous Doctor Name : " + map.get("dname"));
+		System.out.println("Previous Doctor Name : " + map.get("dname"));	
 		System.out.println("Previous Doctor Speciality : " + map.get("speciality"));
 	}
 
+	/**
+	 * This method print all the doctor record present in database.
+	 */
 	public static void listDoctors() {
-
 		
 		try {
 
@@ -157,6 +176,9 @@ public class CRUDDoctor {
 		}
 	}
 
+	/**
+	 * This method takes input from user for insertint new doctor data & pass it to helper method as a Map for insert the data into database.
+	 */
 	public static void insertDoctor() {
 		Scanner sc = new Scanner(System.in);
 

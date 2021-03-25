@@ -11,11 +11,15 @@ import java.util.Map;
 
 import com.divergentsl.IDatabaseManager;
 
+/**
+ * It is helper class for performing CRUD operation on doctor
+ *
+ */
 public class DoctorDao {
 
 	public static final String SPECIALITY = "speciality";
-	public static final String NAME = "name";
-	public static final String ID = "id";
+	public static final String NAME = "dname";
+	public static final String ID = "did";
 	
 	IDatabaseManager databaseManager;
 
@@ -24,6 +28,12 @@ public class DoctorDao {
 	}
 
 	
+	/**
+	 * It is a helper method for delete the doctor data
+	 * @param doctorId
+	 * @return 1 if successfully delete otherwise it return 0.
+	 * @throws SQLException
+	 */
 	public int delete(String doctorId) throws SQLException {
 		Connection con = null;
 		Statement st = null;
@@ -31,28 +41,40 @@ public class DoctorDao {
 		con = databaseManager.getConnection();
 		st = con.createStatement();
 
-		int i = st.executeUpdate("delete from doctor where did = " + doctorId);
+		int i = st.executeUpdate("delete from doctor where " + ID + " = " + doctorId);
 
 		st.close();
 		con.close();
 		return i;
 	}
 
+	/**
+	 * It is a helper method for update the doctor
+	 * @param map
+	 * @return 1 if data successfully updated otherwise it return 0
+	 * @throws SQLException
+	 */
 	public int update(Map<String, String> map) throws SQLException {
 		Connection con;
 		Statement st;
 		con = databaseManager.getConnection();
 		st = con.createStatement();
 
-		int i = st.executeUpdate("update doctor set dname = '" + map.get("dname") + "', speciality = '" + map.get(SPECIALITY)
-				+ "' where did = " + map.get("did"));
+		int i = st.executeUpdate("update doctor set " + NAME + " = '" + map.get("dname") + "', " + SPECIALITY + " = '" + map.get(SPECIALITY)
+				+ "' where " + ID + " = " + map.get("did"));
 
 		st.close();
 		con.close();
 		return i;
 	}
 
-	public Map searchById(String did) throws SQLException {
+	/**
+	 * It is a helper method for search doctor data.
+	 * @param did
+	 * @return Map of doctor data if doctor is found, otherwise it returns empty Map.
+	 * @throws SQLException
+	 */
+	public Map searchById(String doctorId) throws SQLException {
 
 		Connection con = null;
 		Statement st = null;
@@ -61,11 +83,11 @@ public class DoctorDao {
 		con = databaseManager.getConnection();
 		st = con.createStatement();
 
-		ResultSet rs = st.executeQuery("select did, dname, speciality from doctor where did = '" + did + "'");
+		ResultSet rs = st.executeQuery("select " + ID + ", " + NAME + ", " + SPECIALITY + " from doctor where " + ID + " = '" + doctorId + "'");
 
 		if (rs.next()) {
-			map.put("did", rs.getString(1));
-			map.put("dname", rs.getString(2));
+			map.put(ID, rs.getString(1));
+			map.put(NAME, rs.getString(2));
 			map.put(SPECIALITY, rs.getString(3));
 			st.close();
 			con.close();
@@ -78,13 +100,12 @@ public class DoctorDao {
 	}
 
 	/**
-	 * It is a helper method for inserting doctor data
-	 * 
+	 * It is a helper method for inserting doctor data.
 	 * @param dname
 	 * @param username
 	 * @param password
 	 * @param speciality
-	 * @return true if successfully inserted otherwise it return false
+	 * @return 1 if data inserted successfully, otherwise it returns 0.
 	 * @throws SQLException
 	 */
 	public int insert(String dname, String username, String password, String speciality) throws SQLException {
@@ -95,7 +116,7 @@ public class DoctorDao {
 		con = databaseManager.getConnection();
 		st = con.createStatement();
 
-		int i = st.executeUpdate("insert into doctor (dname, username, password, speciality) " + "values ('" + dname + "', '"
+		int i = st.executeUpdate("insert into doctor (" + NAME + ", username, password, " + SPECIALITY + ") " + "values ('" + dname + "', '"
 				+ username + "', '" + password + "', '" + speciality + "')");
 		System.out.println("\nData inserted successfully...");
 
@@ -104,6 +125,12 @@ public class DoctorDao {
 		return i;
 	}
 
+	
+	/**
+	 * It is a helper method for retrieve all doctor data.
+	 * @return List of Map of each doctor data.
+	 * @throws SQLException
+	 */
 	public List<Map<String, String>> list() throws SQLException {
 
 		Connection con = null;
@@ -112,7 +139,7 @@ public class DoctorDao {
 		con = databaseManager.getConnection();
 		st = con.createStatement();
 
-		ResultSet rs = st.executeQuery("select did, dname, speciality from doctor");
+		ResultSet rs = st.executeQuery("select " + ID + ", " + NAME + ", " + SPECIALITY + " from doctor");
 
 		List<Map<String, String>> doctorList = new ArrayList<>();
 

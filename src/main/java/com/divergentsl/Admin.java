@@ -93,7 +93,7 @@ public class Admin {
 
 
     /**
-     * This method print operations that admin can perform
+     * This method print all the operations that admin can perform
      */
     public static void printAdminOptions() {
 

@@ -9,13 +9,28 @@ import java.util.Map;
 
 import com.divergentsl.IDatabaseManager;
 
+
+/**
+ * This class is a helper class for performing CRUD operation on drug
+ */
 public class DrugDao {
 	IDatabaseManager databaseManager;
+	
+	public final String ID = "drug_id";
+	public final String DESCRIPTION = "description";
+	public final String NAME = "drug_name";
 
 	public DrugDao(IDatabaseManager databaseManager) {
 		this.databaseManager = databaseManager;
 	}
 
+	/**
+	 * It is a helper method for adding a new drug
+	 * @param name
+	 * @param description
+	 * @return 1 if drug added successfully, otherwise it return 0.
+	 * @throws SQLException
+	 */
 	public int add(String name, String description) throws SQLException {
 
 		Connection con = null;
@@ -23,13 +38,19 @@ public class DrugDao {
 
 		con = databaseManager.getConnection();
 		st = con.createStatement();
-		int i = st.executeUpdate("insert into drug (drug_name, description) values ('" + name + "','" + description + "')");
+		int i = st.executeUpdate("insert into drug (" + NAME + ", " + DESCRIPTION + ") values ('" + name + "','" + description + "')");
 		System.out.println("Drug added successfully...");
 		st.close();
 		con.close();
 		return i;
 	}
 
+	/**
+	 * It is a helper method for search the drug by drug id
+	 * @param id
+	 * @return Map of drug data if drug found, otherwise returns empty Map.
+	 * @throws SQLException
+	 */
 	public Map<String, String> search(String id) throws SQLException {
     	
     	Connection con = null;
@@ -38,7 +59,7 @@ public class DrugDao {
     	con = databaseManager.getConnection();
     	st = con.createStatement();
     	
-    	ResultSet rs = st.executeQuery("select * from drug where drug_id = " + id);
+    	ResultSet rs = st.executeQuery("select * from drug where " + ID + " = " + id);
     	Map<String, String> data = new HashMap<>();
     	if (rs.next()) {
     		data.put("id", rs.getString(1));
@@ -48,10 +69,11 @@ public class DrugDao {
     	return data;
     }
 	
-	
+
 	/**
-	 * It is helper method for delete drug data
+	 * It is helper method for deleting the drug data by  drug id.
 	 * @param id
+	 * @return 1 if drug data successfully deleted, otherwise it returns 0.
 	 * @throws SQLException
 	 */
 	public int delete(String id) throws SQLException {
@@ -62,15 +84,16 @@ public class DrugDao {
 		con = databaseManager.getConnection();
 		st = con.createStatement();
 		
-		int i = st.executeUpdate("delete from drug where drug_id = " + id);
+		int i = st.executeUpdate("delete from drug where " + ID + " = " + id);
 		System.out.println("\nData deleted successfully...");
 		return i;
 	}
 	
 	
 	/**
-	 * It is a helper method for update the drug data
+	 * It is helper method for update the specific drug data
 	 * @param data
+	 * @return 1 if drug data successfully updated, otherwise it returns 0.
 	 * @throws SQLException
 	 */
 	public int update(Map<String, String> data) throws SQLException {
@@ -80,7 +103,7 @@ public class DrugDao {
 		
 		con = databaseManager.getConnection();
 		st = con.createStatement();
-		int i = st.executeUpdate("update drug set drug_name = '" + data.get("name") + "', description = '" + data.get("description") + "' where drug_id = " + data.get("id"));
+		int i = st.executeUpdate("update drug set " + NAME + " = '" + data.get("name") + "', " + DESCRIPTION + " = '" + data.get("description") + "' where " + ID + " = " + data.get("id"));
 		
 		System.out.println("\nData update successfully...");
 		

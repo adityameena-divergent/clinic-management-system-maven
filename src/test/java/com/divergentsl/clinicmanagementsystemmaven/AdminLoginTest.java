@@ -10,6 +10,7 @@ import java.sql.Statement;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import com.divergentsl.Admin;
 import com.divergentsl.dao.LoginDao;
 
 public class AdminLoginTest {
@@ -41,7 +42,6 @@ public class AdminLoginTest {
 	void testAdminLoginSuccessful() throws SQLException {
 		
 		LoginDao loginDao = new LoginDao(driverManager);
-		System.out.println("Login Dao object created");
 		assertTrue(loginDao.adminLogin("admin", "root"));
 	}
 	
@@ -49,7 +49,6 @@ public class AdminLoginTest {
 	void testAdminLoginUnsuccessful() throws SQLException {
 		
 		LoginDao loginDao = new LoginDao(driverManager);
-		System.out.println("Login Dao object created");
 		assertFalse(loginDao.adminLogin("adminasdas", "ramsdbhoot"));
 	}
 

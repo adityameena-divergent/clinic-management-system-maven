@@ -15,8 +15,7 @@ public class H2DatabaseManager implements IDatabaseManager {
 		try {
 			Class.forName("org.h2.Driver");
 		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+//			e.printStackTrace();
 		}
 	}
 	
@@ -26,7 +25,7 @@ public class H2DatabaseManager implements IDatabaseManager {
 		try {
 			connection = DriverManager.getConnection(DB_URL, "sa", "");
 		} catch (SQLException e) {
-			e.printStackTrace();
+//			e.printStackTrace();
 		}
 		return connection;
 	}

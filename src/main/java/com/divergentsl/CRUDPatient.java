@@ -1,10 +1,6 @@
 package com.divergentsl;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -15,6 +11,9 @@ import com.divergentsl.dao.PatientDao;
 public class CRUDPatient {
 
 
+	/**
+	 * This method takes all the input data of patient and update it.
+	 */
     public static void updatePatient() {
 
         System.out.println("\n----Update Patient Data----");
@@ -62,7 +61,9 @@ public class CRUDPatient {
     }
 
 
-
+    /**
+     * This method takes patient id & remove it from database.
+     */
     public static void deletePatient() {
 
         System.out.println("\n----Delete Patient Data----");
@@ -84,7 +85,10 @@ public class CRUDPatient {
 
     }
 
-
+    
+    /**
+     * This method print all the operation that admin can perform on patient. 
+     */
     public static void printPatientOptions() {
         System.out.println("\n\n----Patient Panel----");
         System.out.println("1. Add new patient");
@@ -97,6 +101,9 @@ public class CRUDPatient {
     }
 
 
+    /**
+     * This method takes a input & redirect it to specific that admin want to perform operation.
+     */
     public static void CRUDOperation() {
         CRUD:
         while(true) {
@@ -140,7 +147,9 @@ public class CRUDPatient {
 
     
 
-
+    /**
+     * This method takes input all patient data and insert into database. 
+     */
     public static void insert() {
         Scanner sc = new Scanner(System.in);
 
@@ -170,7 +179,6 @@ public class CRUDPatient {
         System.out.print("\nEnter Address: ");
         String address = sc.nextLine();
         map.put("address", address);
-
         
         try {
         	PatientDao patientDao = new PatientDao(new DatabaseManager());
@@ -181,7 +189,9 @@ public class CRUDPatient {
     }
 
 
-
+    /**
+     * This method takes patient id & print all the data of that patient
+     */
     public static void search() {
 
         try {
@@ -213,7 +223,9 @@ public class CRUDPatient {
     }
 
 
-    
+    /**
+     * This method print all the records of patient
+     */
     public static void listAll() {
 
         try {
