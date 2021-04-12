@@ -10,8 +10,8 @@ import java.sql.Statement;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import com.divergentsl.Admin;
-import com.divergentsl.dao.LoginDao;
+import com.divergentsl.clinicmanagementsystem.Admin;
+import com.divergentsl.clinicmanagementsystem.dao.LoginDao;
 
 public class AdminLoginTest {
 	

@@ -11,7 +11,7 @@ import java.util.Map;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import com.divergentsl.dao.PatientAppointmentDao;
+import com.divergentsl.clinicmanagementsystem.dao.PatientAppointmentDao;
 
 public class PatientPrescriptionTest {
 

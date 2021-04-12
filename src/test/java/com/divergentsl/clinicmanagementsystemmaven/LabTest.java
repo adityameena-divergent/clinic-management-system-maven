@@ -14,8 +14,8 @@ import java.util.Map;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import com.divergentsl.dao.LabTestDao;
-import com.divergentsl.dao.PatientDao;
+import com.divergentsl.clinicmanagementsystem.dao.LabTestDao;
+import com.divergentsl.clinicmanagementsystem.dao.PatientDao;
 
 public class LabTest {
 	

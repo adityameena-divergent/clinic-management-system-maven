@@ -4,7 +4,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-import com.divergentsl.IDatabaseManager;
+import com.divergentsl.clinicmanagementsystem.IDatabaseManager;
 
 public class H2DatabaseManager implements IDatabaseManager {
 
@@ -21,13 +21,7 @@ public class H2DatabaseManager implements IDatabaseManager {
 	
 	@Override
 	public Connection getConnection() throws SQLException {
-		Connection connection = null;
-		try {
-			connection = DriverManager.getConnection(DB_URL, "sa", "");
-		} catch (SQLException e) {
-//			e.printStackTrace();
-		}
-		return connection;
+		return DriverManager.getConnection(DB_URL, "sa", "");
 	}
 
 }

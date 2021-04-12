@@ -14,8 +14,8 @@ import java.util.Map;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import com.divergentsl.CRUDDrugs;
-import com.divergentsl.dao.DrugDao;
+import com.divergentsl.clinicmanagementsystem.CRUDDrugs;
+import com.divergentsl.clinicmanagementsystem.dao.DrugDao;
 
 public class DrugDaoTest {
 	
